@@ -1,0 +1,20 @@
+[build]
+  command = "pip install -r requirements.txt && streamlit run main.py --server.headless true"
+  functions = "netlify/functions"
+
+[dev]
+  command = "streamlit run main.py"
+  port = 8501
+
+[[redirects]]
+  from = "/*"
+  to = "/"
+  status = 200
+
+[context.production]
+  command = "pip install -r requirements.txt"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
