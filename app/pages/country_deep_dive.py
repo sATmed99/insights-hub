@@ -52,7 +52,7 @@ def show():
         title=f"Cities in {selected_country} by Attractiveness"
     )
     fig.update_layout(
-        template="plotly_dark",
+        template="plotly",
         height=max(300, len(country_df) * 30),
         xaxis_title="Attractiveness Index",
         yaxis_title="City"
@@ -82,7 +82,7 @@ def show():
             names="Sector",
             title=f"Sector Distribution in {selected_country}"
         )
-        fig_sectors.update_layout(template="plotly_dark")
+        fig_sectors.update_layout(template="plotly")
         st.plotly_chart(fig_sectors, use_container_width=True)
     
     with col2:
@@ -92,7 +92,7 @@ def show():
             names=status_counts.index,
             title=f"City Status Distribution in {selected_country}"
         )
-        fig_status.update_layout(template="plotly_dark")
+        fig_status.update_layout(template="plotly")
         st.plotly_chart(fig_status, use_container_width=True)
     
     # Funding vs Attractiveness
@@ -108,7 +108,7 @@ def show():
         title=f"Funding vs Attractiveness in {selected_country}"
     )
     fig_scatter.update_layout(
-        template="plotly_dark",
+        template="plotly",
         height=400
     )
     st.plotly_chart(fig_scatter, use_container_width=True)

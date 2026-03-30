@@ -51,7 +51,7 @@ def show():
         xaxis_title="Attractiveness Index",
         yaxis_title="City",
         height=500,
-        template="plotly_dark",
+        template="plotly",
         hovermode="y unified"
     )
     st.plotly_chart(fig, use_container_width=True)
@@ -68,7 +68,7 @@ def show():
         title="Cities: Votes vs Attractiveness (bubble size = funding)"
     )
     fig_scatter.update_layout(
-        template="plotly_dark",
+        template="plotly",
         height=500,
     )
     st.plotly_chart(fig_scatter, use_container_width=True)
@@ -86,7 +86,7 @@ def show():
         title="Votes and Attractiveness by Region"
     )
     fig_region.update_layout(
-        template="plotly_dark",
+        template="plotly",
         height=400,
     )
     st.plotly_chart(fig_region, use_container_width=True)

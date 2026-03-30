@@ -35,7 +35,7 @@ def show():
         height=400
     )
     fig.update_layout(
-        template="plotly_dark",
+        template="plotly",
         showlegend=False,
     )
     st.plotly_chart(fig, use_container_width=True)
@@ -70,7 +70,7 @@ def show():
         title="Sector Density by Region"
     )
     fig_heatmap.update_layout(
-        template="plotly_dark",
+        template="plotly",
         height=500,
     )
     st.plotly_chart(fig_heatmap, use_container_width=True)
@@ -101,7 +101,7 @@ def show():
         height=400
     )
     fig_city_sector.update_layout(
-        template="plotly_dark",
+        template="plotly",
     )
     st.plotly_chart(fig_city_sector, use_container_width=True)
     

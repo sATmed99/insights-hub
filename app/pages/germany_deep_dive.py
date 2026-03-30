@@ -47,7 +47,7 @@ def show():
         title="German Cities by Attractiveness"
     )
     fig.update_layout(
-        template="plotly_dark",
+        template="plotly",
         height=400,
         xaxis_title="Attractiveness Index",
         yaxis_title="City"
@@ -69,7 +69,7 @@ def show():
             hover_data=["name", "countryCode"],
             title="Funding vs Votes"
         )
-        fig_votes.update_layout(template="plotly_dark", height=400)
+        fig_votes.update_layout(template="plotly", height=400)
         st.plotly_chart(fig_votes, use_container_width=True)
     
     with col2:
@@ -79,7 +79,7 @@ def show():
             names=status_dist.index,
             title="City Status Distribution"
         )
-        fig_status.update_layout(template="plotly_dark")
+        fig_status.update_layout(template="plotly")
         st.plotly_chart(fig_status, use_container_width=True)
     
     # Sector distribution in Germany
@@ -105,7 +105,7 @@ def show():
         title="Sector Distribution Across German Cities"
     )
     fig_sectors.update_layout(
-        template="plotly_dark",
+        template="plotly",
         height=400
     )
     st.plotly_chart(fig_sectors, use_container_width=True)

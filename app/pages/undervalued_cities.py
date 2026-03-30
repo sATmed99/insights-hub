@@ -55,7 +55,7 @@ def show():
         }
     )
     fig.update_layout(
-        template="plotly_dark",
+        template="plotly",
         height=500,
         xaxis_title="Community Votes",
         yaxis_title="Attractiveness Index"
@@ -75,7 +75,7 @@ def show():
             title="Count by Opportunity Type",
             color_discrete_sequence=["#FF6B6B", "#4ECDC4", "#95E1D3"]
         )
-        fig_status.update_layout(template="plotly_dark")
+        fig_status.update_layout(template="plotly")
         st.plotly_chart(fig_status, use_container_width=True)
     
     with col2:
@@ -85,7 +85,7 @@ def show():
             names=region_counts.index,
             title="Opportunities by Region"
         )
-        fig_region.update_layout(template="plotly_dark")
+        fig_region.update_layout(template="plotly")
         st.plotly_chart(fig_region, use_container_width=True)
     
     # Detailed table

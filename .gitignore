@@ -1,13 +1,118 @@
-node_modules/
+# ==========================================
+# Global Startup Analytics Hub - Git Ignore
+# ==========================================
+# NOTE: ./data/ folder is INTENTIONALLY INCLUDED
+#       (contains real data needed for deployment)
+
+# ==========================================
+# Python
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ==========================================
+# Virtual Environments
+# ==========================================
+venv/
+.venv
+env/
+ENV/
+.conda/
+
+# ==========================================
+# IDE & Editor
+# ==========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.project
+.pydevproject
+.settings/
+*.sublime-project
+*.sublime-workspace
+.atom/
+
+# ==========================================
+# Testing
+# ==========================================
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+
+# ==========================================
+# Streamlit Specific
+# ==========================================
+.streamlit/secrets.toml
+.streamlit/cache/
+.streamlit/config_backup.toml
+*.streamlit_cache
+
+# ==========================================
+# Environment & Secrets (NEVER PUSH)
+# ==========================================
+.env
+.env.*
+!.env.example
+secrets.toml
+config.local.toml
+
+# ==========================================
+# OS Files
+# ==========================================
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log
+
+# ==========================================
+# Build & Package Files
+# ==========================================
 build/
 dist/
 coverage/
-.DS_Store
-*.log
-.env*
-!.env.example
-venv/
-__pycache__/
-*.pyc
-.pytest_cache/
-.streamlit/secrets.toml
+*.spec
+
+# ==========================================
+# Temporary Files
+# ==========================================
+*.tmp
+*.bak
+*.swp
+*~
+.~*
+
+# ==========================================
+# Data folders (KEEP THESE - NEVER IGNORE)
+# ==========================================
+# DO NOT ignore ./data/ - it contains real startup data needed for deployment
+# Explicitly tracked: ./data/*.csv files
+# /data/ is NOT in the ignore list - all CSVs will be pushed to GitHub
+

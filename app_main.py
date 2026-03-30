@@ -1,126 +1,135 @@
-"""Insights Hub - Main Application"""
+"""Global Startup Analytics Hub - Main Application"""
 import streamlit as st
-import pandas as pd
 from app import pages
-from app.data import get_regions, get_sectors, get_statuses
 
 # Page configuration
 st.set_page_config(
-    page_title="Insights Hub",
-    page_icon="📊",
+    page_title="Global Startup Analytics Hub",
+    page_icon="🌍",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
-# Custom CSS for dark theme
+# Custom modern CSS
 st.markdown("""
 <style>
-    [data-testid="stSidebar"] {
-        background-color: #1a1a1a;
+    :root {
+        --main-bg: #f8f9fa;
+        --main-text: #1a1a1a;
+        --accent-purple: #667eea;
+        --accent-pink: #764ba2;
     }
     
-    .stApp {
-        background-color: #050505;
-        color: #e4e4e7;
-    }
-    
-    .metric-card {
-        background-color: #1a1a1a;
-        padding: 20px;
+    .header {
+        text-align: center;
+        padding: 2rem 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
         border-radius: 10px;
-        border: 1px solid #333;
+        margin-bottom: 2rem;
+    }
+    
+    .stat-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin: 1rem 0;
+    }
+    
+    .page-title {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 2.5em;
+        font-weight: bold;
+        margin-bottom: 1rem;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# Initialize session state
-if "selected_regions" not in st.session_state:
-    st.session_state.selected_regions = ["All EU"]
-
-if "selected_sectors" not in st.session_state:
-    st.session_state.selected_sectors = ["Fintech", "SaaS", "Healthtech", "Edtech"]
-
-if "selected_statuses" not in st.session_state:
-    st.session_state.selected_statuses = get_statuses()
-
-# Sidebar navigation
+# Sidebar
 with st.sidebar:
-    st.title("� Insights Hub")
+    st.title("🌍 Analytics Hub")
+    st.markdown("---")
+    
+    # Logo / Branding
+    st.markdown("""
+    ### Global Startup Ecosystem Analytics
+    Real-time insights into worldwide startup trends
+    """)
+    
     st.markdown("---")
     
     # Navigation
-    st.subheader("Navigation")
+    st.subheader("📊 Navigation")
     page = st.radio(
         "Select Page",
         options=[
-            "City Intelligence",
-            "Sector Map",
-            "Undervalued Cities",
-            "Germany Deep Dive",
-            "Country Deep Dive",
-            "Methodology"
+            "📈 Dashboard",
+            "🌍 Geographic Analysis",
+            "🏭 Industry Analytics",
+            "🔍 Startup Search",
+            "🔗 Domain Extensions",
+            "🏙️ City Intelligence",
+            "🗺️ Sector Map",
+            "💎 Undervalued Cities",
+            "🇩🇪 Germany Deep Dive",
+            "🌎 Country Deep Dive",
+            "📋 Methodology"
         ],
         label_visibility="collapsed"
     )
     
     st.markdown("---")
     
-    # Filters
-    st.subheader("Filters")
+    # Info section
+    st.markdown("""
+    ### 📊 About This Hub
     
-    # Region filter
-    st.markdown("**Regions**")
-    regions = get_regions()
-    selected_regions = st.multiselect(
-        "Select Regions",
-        options=regions,
-        default=st.session_state.selected_regions,
-        label_visibility="collapsed"
-    )
-    st.session_state.selected_regions = selected_regions or ["All EU"]
+    This analytics platform provides:
     
-    # Sector filter
-    st.markdown("**Sectors**")
-    sectors = get_sectors()
-    selected_sectors = st.multiselect(
-        "Select Sectors",
-        options=sectors,
-        default=st.session_state.selected_sectors,
-        label_visibility="collapsed"
-    )
-    st.session_state.selected_sectors = selected_sectors or sectors
+    - **Real-time Data**: Startup votes & trends from global sources
+    - **Geographic Insights**: City & regional analysis
+    - **Industry Trends**: Market analysis by sector
+    - **Company Discovery**: Search & filter startups
+    - **Domain Analysis**: Extension performance metrics
     
-    # Status filter (for future use)
-    st.markdown("**City Status**")
-    statuses = get_statuses()
-    selected_statuses = st.multiselect(
-        "Select Status",
-        options=statuses,
-        default=st.session_state.selected_statuses,
-        label_visibility="collapsed"
-    )
-    st.session_state.selected_statuses = selected_statuses or statuses
+    **Data Sources:**
+    - Worldwide startup voting data
+    - Industry classifications
+    - Geographic distribution
+    - Domain extension analysis
+    """)
     
     st.markdown("---")
     
-    # About section
     st.markdown("""
-    ### About
-    Insights Hub is a business analytics platform for exploring market ecosystems.
+    🔗 [Report Issue](https://github.com)
     
-    **Latest Update**: March 2025
+    **Last Updated**: March 2026
     """)
 
-# Main content
-if page == "City Intelligence":
+# Page routing
+if page == "📈 Dashboard":
+    pages.dashboard.show()
+elif page == "🌍 Geographic Analysis":
+    pages.geographic_analytics.show()
+elif page == "🏭 Industry Analytics":
+    pages.industry_analytics.show()
+elif page == "🔍 Startup Search":
+    pages.startup_search.show()
+elif page == "🔗 Domain Extensions":
+    pages.domain_analytics.show()
+elif page == "🏙️ City Intelligence":
     pages.city_intelligence.show()
-elif page == "Sector Map":
+elif page == "🗺️ Sector Map":
     pages.sector_map.show()
-elif page == "Undervalued Cities":
+elif page == "💎 Undervalued Cities":
     pages.undervalued_cities.show()
-elif page == "Germany Deep Dive":
+elif page == "🇩🇪 Germany Deep Dive":
     pages.germany_deep_dive.show()
-elif page == "Country Deep Dive":
+elif page == "🌎 Country Deep Dive":
     pages.country_deep_dive.show()
-elif page == "Methodology":
+elif page == "📋 Methodology":
     pages.methodology.show()
+
